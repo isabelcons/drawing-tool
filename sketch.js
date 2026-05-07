@@ -1,3 +1,12 @@
+let skinMode = false;
+let peachColors = [
+  [255, 219, 190],
+  [242, 190, 160],
+  [224, 160, 130],
+  [198, 120, 95],
+  [150, 85, 65]
+];
+
 let currentTool = 1;
 
 function setup() {
@@ -100,6 +109,37 @@ function draw() {
       }
     }
 
+// TOOL A — peach portrait brush
+if (keyIsDown(65) && mouseIsPressed) {
+  let c = random(peachColors);
+  fill(c[0], c[1], c[2], 90);
+  noStroke();
+  ellipse(mouseX, mouseY, random(25, 70), random(20, 60));
+}
+
+// TOOL H — hair brush
+if (keyIsDown(72) && mouseIsPressed) {
+  stroke(random(20, 80));
+  strokeWeight(random(2, 8));
+  line(mouseX, mouseY, mouseX + random(-30, 30), mouseY + random(-30, 30));
+}
+
+// TOOL E — eye/detail brush
+if (keyIsDown(69) && mouseIsPressed) {
+  fill(0);
+  noStroke();
+  ellipse(mouseX, mouseY, 12, 8);
+  fill(255);
+  ellipse(mouseX + 3, mouseY - 2, 3, 3);
+}
+
+// TOOL L — lip brush
+if (keyIsDown(76) && mouseIsPressed) {
+  fill(180, 60, 70, 90);
+  noStroke();
+  ellipse(mouseX, mouseY, random(25, 60), random(8, 20));
+}
+
     // TOOL 0 — eraser
     else if (currentTool == 0) {
       fill(255);
@@ -113,6 +153,10 @@ function draw() {
 }
 
 function keyPressed() {
+
+if (key == 'p' || key == 'P') {
+  skinMode = !skinMode;
+}
 
   if (key >= '0' && key <= '9') {
     currentTool = int(key);
