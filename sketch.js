@@ -193,5 +193,10 @@ function drawUI() {
   text("8 triangles", 120, 155);
   text("9 noise", 220, 155);
 
+text("A portrait skin", 120, 175);
+text("H hair", 20, 195);
+text("E eyes/details", 120, 195);
+text("L lips", 250, 195);
+
   text("0 eraser", 20, 175);
 }
